@@ -20,7 +20,7 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-custom-images-src`,
+            resolve: `gatsby-remark-custom-image-component`,
             options: {
               // plugin options
               componentName: 'image-wrapper',
