@@ -53,7 +53,13 @@ In your custom component:
 //src/components/ImageWrapper.js
 import React from 'react'
 
-export default ({ src, srcSet }) => <img src={src} srcSet={srcSet} />
+// the result of sharp's image transformation will be passed directly to this component.
+// so if you use `fluid` as `sharpMethod`, you'll get
+// src, srcSet, base64, aspectRatio, srcSetType, sizes, density, originalImage. 
+// Please refer to `gatsby-plugin-sharp` docs.
+const ImageWrapper =  ({ src, srcSet }) => <img src={src} srcSet={srcSet} />
+
+export { ImageWrapper }
 ```
 
 In your template:
@@ -62,11 +68,11 @@ In your template:
 //src/templates/blog-post.js
 import React from 'react'
 import rehypeReact from 'rehype-react'
-import ImageWrapper from '../components/ImageWrapper'
+import { ImageWrapper } from '../components/ImageWrapper'
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
-  components: { 'image-wrapper': ImageWrapper },
+  components: { 'image-wrapper': ImageWrapper }, // register our component
 }).Compiler
 
 const BlogPostTemplate = ({ data }) => {
