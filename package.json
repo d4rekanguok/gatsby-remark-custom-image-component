@@ -1,11 +1,12 @@
 {
   "name": "gatsby-remark-custom-image-component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Locate `gatsby-plugin-sharp` processed images for custom markdown components",
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
-    "watch": "babel -w src --out-dir . --ignore **/__tests__"
+    "watch": "babel -w src --out-dir . --ignore **/__tests__",
+    "prepublishOnly": "yarn build"
   },
   "keywords": [
     "gatsby",
