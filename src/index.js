@@ -15,7 +15,7 @@ module.exports = async ({ markdownAST: mdast, markdownNode, files, getNode, repo
   if (['fluid', 'fixed', 'resize'].indexOf(sharpMethod) < 0) reporter.panic(`'sharpMethod' only accepts 'fluid', 'fixed' or 'resize', got ${sharpMethod} instead.`);
 
   const targetNodes = selectAll('html', mdast);
-  targetNodes.forEach(async node => {
+  return Promise.all(targetNodes.map(async node => {
     if (!node.value) return;
     if (!node.value.includes(`<${componentName}`)) return;
 
@@ -60,6 +60,8 @@ module.exports = async ({ markdownAST: mdast, markdownNode, files, getNode, repo
 
     // add each of imageResult's value to name
     Object.keys(otherImageRes).forEach(key => {
+      if (!otherImageRes[key]) return
+
       customNode.attrs.push({
         name: key,
         value: otherImageRes[key].toString(), // some value are numbers
@@ -68,5 +70,5 @@ module.exports = async ({ markdownAST: mdast, markdownNode, files, getNode, repo
     
     // re-serialize the node
     node.value = parse5.serialize(parsed);
-  })
+  }))
 }

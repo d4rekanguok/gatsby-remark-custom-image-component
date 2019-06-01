@@ -24,12 +24,14 @@
   },
   "peerDependencies": {
     "gatsby": "^2.0.0",
-    "gatsby-transformer-remark": "^2.0.0",
-    "gatsby-plugin-sharp": "^2.0.20"
+    "gatsby-plugin-sharp": "^2.0.20",
+    "gatsby-transformer-remark": "^2.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1"
+    "@babel/preset-env": "^7.3.1",
+    "gatsby": "^2.8.2",
+    "gatsby-plugin-sharp": "^2.1.3"
   }
 }
