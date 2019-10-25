@@ -14,7 +14,7 @@ module.exports = async ({ markdownAST: mdast, markdownNode, files, getNode, repo
 
   if (['fluid', 'fixed', 'resize'].indexOf(sharpMethod) < 0) reporter.panic(`'sharpMethod' only accepts 'fluid', 'fixed' or 'resize', got ${sharpMethod} instead.`);
 
-  const targetNodes = selectAll('html', mdast);
+  const targetNodes = selectAll('html, jsx', mdast);
   return Promise.all(targetNodes.map(async node => {
     if (!node.value) return;
     if (!node.value.includes(`<${componentName}`)) return;
